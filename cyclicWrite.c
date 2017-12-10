@@ -9,7 +9,6 @@
 #include <sys/types.h>
 #include "cyclicBuf.h"
 
-
 int main() {
   int shared_file_descr = shm_open("shared_buffer", O_CREAT | O_RDWR, S_IRWXU);
   if (shared_file_descr == -1) {
@@ -39,6 +38,5 @@ int main() {
     mem->pl++;
     mem->pl %= 1000;
   }
-}
   return 0;
 }
