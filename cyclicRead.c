@@ -25,7 +25,7 @@ int main() {
 
   uint64_t cur_pos = 0;
   printf("starting at %ld\n", cur_pos);
-  while (true) {
+  while (1) {
     while (mem->pos == cur_pos) {
     };
     int64_t cur_seed = verify((void*)mem->BUFFER[cur_pos].arr);
