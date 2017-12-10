@@ -22,10 +22,17 @@ int main() {
     return -1;
   }
 
+<<<<<<< HEAD
   uint64_t current_pl = 0;
   printf("starting position: %ld\n", current_pl);
   while (true) {
     while (mem->pl == current_pl) {
+=======
+  uint64_t cur_pos = 0;
+  printf("starting at %ld\n", cur_pos);
+  while (1) {
+    while (mem->pos == cur_pos) {
+>>>>>>> 9ead5e0cb8445df43664598f4125f3318d52934c
     };
     int64_t current_seed = verify((void*)mem->BUFFER[current_pl].arr);
     if (current_seed == -1) {

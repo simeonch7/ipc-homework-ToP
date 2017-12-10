@@ -33,8 +33,13 @@ int main() {
 
   mem->pl = 0;
   uint32_t seed = 0;
+<<<<<<< HEAD
   while (true) {
     generate((void*)mem->BUFFER[mem->pl].arr, seed);
+=======
+  while (1) {
+    generate((void*)mem->BUFFER[mem->pos].arr, seed);
+>>>>>>> 9ead5e0cb8445df43664598f4125f3318d52934c
     seed++;
     mem->pl++;
     mem->pl %= 1000;
