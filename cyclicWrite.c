@@ -12,21 +12,21 @@
 int main() {
   int shared_file_descr = shm_open("shared_buffer", O_CREAT | O_RDWR, S_IRWXU);
   if (shared_file_descr == -1) {
-    perror("Can't open the file??");
+    perror("Can't open the file?");
     return -1;
   }
 
   int res;
   res = ftruncate(shared_file_descr, sizeof(struct cyclic_buf));
   if (res != 0) {
-    perror("Can't truncate file");
+    perror("Can't truncate the file?");
     return res;
   }
 
   struct cyclic_buf* mem = mmap(NULL, sizeof(struct cyclic_buf),
                                 PROT_READ | PROT_WRITE, MAP_SHARED, shared_file_descr, 0);
   if (mem == NULL) {
-    perror("Can't mmap");
+    perror("mmap??? whats that?");
     return -1;
   }
 
