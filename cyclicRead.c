@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include "cyclicBuf.h"
+
 int main() {
   int shared_file_descr = shm_open("shared_place", O_RDONLY, 0);
   if (shared_file_descr == -1) {
