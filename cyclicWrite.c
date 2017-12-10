@@ -33,7 +33,7 @@ int main() {
 
   mem->pos = 0;
   uint32_t seed = 0;
-  while (true) {
+  while (1) {
     generate((void*)mem->BUFFER[mem->pos].arr, seed);
     seed++;
     mem->pos++;
