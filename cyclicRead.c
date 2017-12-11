@@ -28,9 +28,8 @@ int main() {
   printf("starting position: %ld\n", current_pl);
 
   while (1) {
-    if (mem->pl == current_pl) {
-    	continue;
-    }
+    while (mem->pl == current_pl) {
+    };
     
     int64_t current_seed = verify((void*)mem->BUFFER[current_pl].arr);
     
