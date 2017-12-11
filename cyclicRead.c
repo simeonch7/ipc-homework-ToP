@@ -18,7 +18,7 @@ int main() {
 
   struct cyclic_buf* mem =
       mmap(NULL, sizeof(struct cyclic_buf), PROT_READ, MAP_SHARED, shared_file_descr, 0);
-  if (mem == NULL) {
+  if (mem == MAP_FAILED) {
     perror("mmap? what's that?");
     return -1;
   }
