@@ -35,14 +35,19 @@ int main() {
     
     int64_t current_seed = verify((void*)mem->BUFFER[current_pl].arr);
     
+    if(mem->pl >= current_pl + 1000){
+    printf("OverJumped!!!");
+    break;
+    }
+    
     if (current_seed == -1 || prev_seed + 1 != current_seed) {
-      printf("Error verify! curr_seed = -1?");
+      printf("Error verifying!");
       break;
     }
     prev_seed = current_seed;
     printf("Verified at %ld with seed %ld\n", current_pl, current_seed);
     current_pl++;
-    current_pl %= 1000;
+   // current_pl %= 1000;
   }
   return 0;
 }
