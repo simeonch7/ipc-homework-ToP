@@ -25,7 +25,7 @@ int main() {
   }
 
   uint64_t current_pl = 0;
-  uint64_t prev_seed = 0;
+  uint64_t prev_seed = -1;
   
   printf("starting position: %ld\n", current_pl);
 
@@ -52,7 +52,7 @@ int main() {
     
     printf("%ld -> %ld\n", current_pl, current_seed);
     current_pl++;
-    current_pl %= 1000;
+    //current_pl %= 1000;
   }
   
   return 0;

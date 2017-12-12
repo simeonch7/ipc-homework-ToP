@@ -36,7 +36,7 @@ int main() {
     generate((void*)mem->BUFFER[mem->pl].arr, seed);
     seed++;
     mem->pl++;
-    mem->pl %= 1000;
+   // mem->pl %= 1000;
   }
   return 0;
 }
