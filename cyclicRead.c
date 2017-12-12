@@ -18,6 +18,7 @@ int main() {
 
   struct cyclic_buf* mem =
       mmap(NULL, sizeof(struct cyclic_buf), PROT_READ, MAP_SHARED, shared_file_descr, 0);
+      
   if (mem == MAP_FAILED) {
     perror("mmap? what's that?");
     return -1;
@@ -25,29 +26,34 @@ int main() {
 
   uint64_t current_pl = 0;
   uint64_t prev_seed = 0;
+  
   printf("starting position: %ld\n", current_pl);
 
   while (1) {
+  
     if (mem->pl == current_pl) {
     sleep(1);
     continue;
     }
-    
-    int64_t current_seed = verify((void*)mem->BUFFER[current_pl].arr);
     
     if(mem->pl >= current_pl + 1000){
     printf("OverJumped!!!");
     break;
     }
     
+    int64_t current_seed = verify((void*)mem->BUFFER[current_pl].arr);
+    
     if (current_seed == -1 || prev_seed + 1 != current_seed) {
       printf("Error verifying!");
       break;
     }
+    
     prev_seed = current_seed;
-    printf("Verified at %ld with seed %ld\n", current_pl, current_seed);
+    
+    printf("%ld -> %ld\n", current_pl, current_seed);
     current_pl++;
-   // current_pl %= 1000;
+    current_pl %= 1000;
   }
+  
   return 0;
 }
