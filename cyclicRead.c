@@ -4,10 +4,12 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <stdbool.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include "cyclicBuf.h"
+
 
 int main() {
   int shared_file_descr = shm_open("shared_place", O_RDONLY, 0);
@@ -29,6 +31,7 @@ int main() {
   
   printf("starting position: %ld\n", current_pl);
 
+  bool seed_check = false;
   while (1) {
   
     if (mem->pl == current_pl) {
@@ -43,8 +46,7 @@ int main() {
     
     int64_t current_seed = verify((void*)mem->BUFFER[current_pl].arr);
     
-    if (current_seed == -1 || prev_seed + 1 != current_seed) {
-      printf("Error verifying!");
+    if (current_seed == -1 || (prev_seed + 1 != current_seed && seed_check == true)) {
       break;
     }
     
